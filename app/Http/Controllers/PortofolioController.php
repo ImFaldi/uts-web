@@ -11,6 +11,7 @@ class PortofolioController extends Controller
     function index(Request $request)
     {
         $portofolio = Portofolio::all();
+        
         return view('dashboard.table', compact('portofolio')); 
     }
 

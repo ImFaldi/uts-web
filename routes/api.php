@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::get('portofolio', [ApiController::class, 'index']);
+Route::post('portofolio/create', [ApiController::class, 'create']);
+Route::put('portofolio/update/{id}', [ApiController::class, 'update']);
+Route::get('portofolio/delete/{id}', [ApiController::class, 'delete']);
