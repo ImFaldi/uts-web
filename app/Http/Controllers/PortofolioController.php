@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Portofolio;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class PortofolioController extends Controller
@@ -11,8 +12,9 @@ class PortofolioController extends Controller
     function index(Request $request)
     {
         $portofolio = Portofolio::all();
+        $category = Category::all();
         
-        return view('dashboard.table', compact('portofolio')); 
+        return view('dashboard.table', compact('portofolio'), compact('category')); 
     }
 
     function create(Request $request)
@@ -43,6 +45,7 @@ class PortofolioController extends Controller
     {
         $portofolio = Portofolio::find($request->id);
         $portofolio->title = $request->title;
+        $portofolio->category_id = $request->category_id;
         $portofolio->description = $request->description;
         if ($request->hasFile('image')) {
             $request->file('image')->move('images/', $request->file('image')->getClientOriginalName());

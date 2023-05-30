@@ -8,6 +8,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PortofolioController;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,4 +36,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/portofolio/create', [PortofolioController::class, 'create'])->name('portofolio.store');
     Route::post('/portofolio/edit/{id}', [PortofolioController::class, 'update'])->name('portofolio.update');
     Route::get('/portofolio/delete/{id}', [PortofolioController::class, 'delete'])->name('portofolio.delete');
+
+    Route::post('/category/create', [CategoryController::class, 'create'])->name('category.store');
+    Route::post('/category/edit/{id}', [CategoryController::class, 'update'])->name('category.update');
+    Route::get('/category/delete/{id}', [CategoryController::class, 'delete'])->name('category.delete');
 });
